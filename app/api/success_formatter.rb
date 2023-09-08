@@ -2,9 +2,9 @@ module SuccessFormatter
   def self.call(object, env)
     response = {
       message: 'Success retrieve data',
-      data: object
+      data: object.try(:[], :data).present? ? object[:data] : object
     }
-    # response[:meta] = object[:meta] if object.try(:[], :meta).present?
+    response[:meta] = object[:meta] if object.try(:[], :meta).present?
 
     # if env["grape.request.params"]["log_incoming"].present?
     #   env["grape.request.params"]["log_incoming"].update(

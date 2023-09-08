@@ -20,8 +20,11 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.paginate(params)
-    total_number = 0
-    val = self.limit(params.limit).offset(params.page)
-
+    val = self.page(params.page).per(params.limit)
+    {data: val, meta: {
+      page: params.page,
+      limt: params.limit,
+      total: val.total_count
+    }}
   end
 end

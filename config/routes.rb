@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   mount Hello::API => '/hello/'
   mount AuthorAPI::API => '/author/'
+  mount BookAPI::API => '/book/'
 end

@@ -1,4 +1,4 @@
-module AuthorAPI
+module BookAPI
   class API < Grape::API
     version 'v1', using: :path, vendor: 'me'
     include Grape::Extensions::Hashie::Mash::ParamBuilder
@@ -11,31 +11,34 @@ module AuthorAPI
       error!("Format filter tanggal salah", 422) if params['start_date'].present? && params['start_date'] > params['end_date']
     end
 
-    resources :author do
+    resources :book do
       params do
         optional :q, type: String
+        optional :author, type: Integer
         optional :start_date, type: Date
         optional :end_date, type: Date
         optional :page, type: Integer, default: 1
         optional :limit, type: Integer, default: 25
       end
       get '/' do
-        author = Author.filter(params)
-        d = author.paginate(params)
+        book = Book.filter(params)
+        d = book.paginate(params)
         present d, with: Grape::Presenters::Presenter
       end
 
       get '/:id' do
-        author = Author.find_by_id(params.id)
-        present author, with: Grape::Presenters::Presenter
+        book = Book.find_by_id(params.id)
+        present book, with: Grape::Presenters::Presenter
       end
 
       params do
-        requires :name, type: String, desc: 'Author Name'
+        requires :title, type: String, desc: 'Author Name'
+        requires :year, type: Integer
+        requires :author_id, type: Integer
       end
       post '/' do
-        author = Author.new_from_params(params)
-        present author, with: Grape::Presenters::Presenter
+        book = Book.new_from_params(params)
+        present book, with: Grape::Presenters::Presenter
       end
     end
   end
