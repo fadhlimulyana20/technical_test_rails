@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   root "book#index"
 
-  resources :book
+
+  get "/book", to: "book#index", as: 'book_index'
+  post "/book", to: "book#create"
+  get "/book/new", to: "book#new"
 end
