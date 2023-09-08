@@ -1,7 +1,7 @@
 class AddAuthorToBooks < ActiveRecord::Migration[6.0]
   def change
-    change_table :authors do |t| 
-      t.integer :book_id
+    change_table :books do |t|
+      t.integer :author_id
     end
   end
 end
