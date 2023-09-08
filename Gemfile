@@ -32,6 +32,7 @@ gem 'grape', '>= 1.8.0'
 gem 'grape-entity'
 gem 'hashie-forbidden_attributes'
 gem 'kaminari'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
