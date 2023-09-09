@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 for i in 1..25 do
-  author = Author.new(name: Faker::Book.title)
+  author = Author.new(name: Faker::Book.author)
   author.save
   book = Book.new(title: Faker::Book.title, year: 2022, author: author)
   book.save

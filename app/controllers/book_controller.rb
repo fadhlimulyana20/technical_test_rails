@@ -14,7 +14,7 @@ class BookController < ActionController::Base
     @authors = Author.all
     @book = Book.new(book_params)
     if @book.save
-      current_user.delay.send_notification("You have created a new book which is entitled as #{@book.title}")
+      current_user.delay.send_notification_create_book(@book.title)
       redirect_to :book_index
     else
       render :new, status: :unprocessable_entity

@@ -6,8 +6,10 @@ class User < ApplicationRecord
     validates :username, presence: true
     validates :email, presence: true, format: { with: /\A(.+)@(.+)\z/, message: "Email invalid"  }
 
-    def send_notification(msg)
+    def send_notification_create_book(book)
         # ToDo: Hit external API
-        puts "Send Email Notification to #{self.email}, with message: #{msg}"
+        puts "Send Email Notification to #{self.email}, with message: you have created book: #{book}"
+
+        UserMailer.with(user: self, book: book).create_book_notification.deliver_now
     end
 end
