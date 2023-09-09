@@ -2,7 +2,7 @@ class BookController < ActionController::Base
   before_action :check_if_authenticated
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
   end
 
   def new
