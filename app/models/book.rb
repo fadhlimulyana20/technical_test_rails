@@ -1,5 +1,8 @@
 class Book < ApplicationRecord
     belongs_to :author
+    validates :title, presence: true
+    validates :year, presence: true
+    validates :author_id, presence: true
 
     def self.filter(params)
         data = self.all
