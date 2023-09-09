@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+for i in 1..25 do
+  author = Author.new(name: Faker::Book.title)
+  author.save
+  book = Book.new(title: Faker::Book.title, year: 2022, author: author)
+  book.save
+end

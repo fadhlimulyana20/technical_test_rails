@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technical Test Rails Application
 
-Things you may want to cover:
+## Route
+* / (index)
+* /book (book-list)
+* /book/new (create book)
+* /book/api/v1/book (Book List API)
+* /author/api/v1/author (Author List API)
 
-* Ruby version
+## Install
+```sh
+bundle
+rails db:migrate
+rails db:seed
+```
 
-* System dependencies
+## Test
+```sh
+rails test
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run
+```sh
+rails s
+```
